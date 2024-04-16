@@ -176,6 +176,12 @@ class Notification implements NotificationContract, Arrayable
         return $this;
     }
 
+    public function eventId(Carbon $value): Notification
+    {
+        $this->notification['event_id'] = $value;
+        return $this;
+    }
+
     public function icon(string $value): Notification
     {
         $this->notification['icon'] = $value;

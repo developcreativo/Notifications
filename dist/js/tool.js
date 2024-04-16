@@ -445,7 +445,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -503,11 +502,6 @@ var render = function() {
                 href: _vm.formatRouterLink(_vm.notification),
                 external: _vm.notification.data.external,
                 classList: ["no-underline", "text-black", "flex-1"]
-              },
-              nativeOn: {
-                click: function($event) {
-                  return _vm.markAsRead()
-                }
               }
             },
             [
