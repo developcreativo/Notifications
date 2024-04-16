@@ -7,7 +7,6 @@
     <div class="block no-underline text-90 hover:bg-30 p-3">
         <div class="flex justify-between">
             <notification-link
-                @click.native="markAsRead()"
                 :href="formatRouterLink(notification)"
                 :external="notification.data.external"
                 :classList="['no-underline', 'text-black', 'flex-1']"
