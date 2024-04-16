@@ -4,6 +4,7 @@
 namespace Developcreativo\Notifications\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Response;
 
 class MarkAsReadController
@@ -14,7 +15,10 @@ class MarkAsReadController
 			->user()
 			->unreadNotifications()
 			->find($notification)
-			->markAsRead();
+            ->forceFill(['read_at' => Date::now()])->save();
+
+
+        
 
 		return Response::json([
 			'notification' => $request
