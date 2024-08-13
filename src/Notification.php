@@ -21,7 +21,7 @@ class Notification implements NotificationContract, Arrayable
      * @param $title
      * @param $subtitle
      */
-    public function __construct($title = null, $subtitle = null)
+    public function __construct($title = null, $subtitle = null, string $eventid = null)
     {
         if (!empty($title)) {
             $this->title($title);
@@ -29,6 +29,9 @@ class Notification implements NotificationContract, Arrayable
 
         if (!empty($subtitle)) {
             $this->subtitle($subtitle);
+        }
+        if (!empty($eventid)) {
+            $this->eventId($eventid);
         }
 
         $this
@@ -44,9 +47,9 @@ class Notification implements NotificationContract, Arrayable
      * @param string|null $subtitle
      * @return Notification
      */
-    public static function make(string $title = null, string $subtitle = null): Notification
+    public static function make(string $title = null, string $subtitle = null, string $eventid = null): Notification
     {
-        return new static($title, $subtitle);
+        return new static($title, $subtitle, $eventid);
     }
 
     /**
