@@ -45,6 +45,7 @@ class Notification implements NotificationContract, Arrayable
     /**
      * @param string|null $title
      * @param string|null $subtitle
+     * @param string|null $eventid
      * @return Notification
      */
     public static function make(string $title = null, string $subtitle = null, string $eventid = null): Notification
