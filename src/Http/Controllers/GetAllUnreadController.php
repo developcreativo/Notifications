@@ -3,6 +3,7 @@
 
 namespace Developcreativo\Notifications\Http\Controllers;
 
+use App\Activity;
 use App\Eventos;
 use App\Traits\AccessScopeTraits;
 use Illuminate\Http\Request;
@@ -21,15 +22,15 @@ class GetAllUnreadController
 // Obtener los IDs de acceso según el rol del usuario
         $accessScopeIds = self::getAccessScopeIds();
         $clientIds = $accessScopeIds['clientes'] ?? [];
-        $subjectIds = $accessScopeIds['subjects'] ?? [];
+        $subjectIds = $accessScopeIds['ubicaciones'] ?? [];
+
 
         $filteredNotifications = $unreadNotifications->filter(function ($notification) use ($clientIds, $subjectIds) {
             $data = $notification->data;
 
             // Verificar si la notificación tiene 'event_id'
             if (isset($data['event_id'])) {
-                $event = Eventos::find($data['event_id']);
-
+                $event = Activity::query()->where('id', $data['event_id'])->where('subject_type', 'App\Ubicacion')->first();
                 if ($event) {
                     // Verificar si el 'id_cliente' o 'subject_id' del evento está en los IDs permitidos
                     //mtzmorenoj@gmail.com
